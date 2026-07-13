@@ -1654,10 +1654,12 @@ html[data-color-scheme="dark"] .support-ribbon__link {
   height: 3rem;
 }
 
+.print-sheet .tracker-table--wide td,
 .tracker-table--wide td {
   height: 5.5rem;
 }
 
+.print-sheet .tracker-table--appointment-log td,
 .tracker-table--appointment-log td {
   height: 11rem;
 }
@@ -2229,6 +2231,7 @@ html[data-color-scheme="dark"] .focus-card {
     table-layout: fixed;
   }
 
+  .print-sheet .tracker-table--appointment-log td,
   .tracker-table--appointment-log td {
     height: 6.8rem;
   }
