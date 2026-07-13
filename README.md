@@ -8,9 +8,9 @@ SPDX-License-Identifier: MIT
 
 # HeartStrong
 
-[![Build and Test](https://github.com/StanfordBDHG/HeartStrong/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/StanfordBDHG/HeartStrong/actions/workflows/build-and-test.yml)
-[![Deploy to GitHub Pages](https://github.com/StanfordBDHG/HeartStrong/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/StanfordBDHG/HeartStrong/actions/workflows/deploy-pages.yml)
-[![CodeQL](https://github.com/StanfordBDHG/HeartStrong/actions/workflows/codeql.yml/badge.svg)](https://github.com/StanfordBDHG/HeartStrong/actions/workflows/codeql.yml)
+[![Build and Test](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/build-and-test.yml)
+[![Deploy to GitHub Pages](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/deploy-pages.yml)
+[![CodeQL](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/codeql.yml/badge.svg)](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/codeql.yml)
 
 HeartStrong is a static patient education website that extends the HeartStrong booklet with heart failure education, guided goal setting, treatment guidance, and printable visit resources.
 
@@ -85,5 +85,5 @@ This project is licensed under the MIT License. See [Licenses](LICENSES) for mor
 This project is developed as part of the Stanford Byers Center for Biodesign at Stanford University.
 See [CONTRIBUTORS.md](CONTRIBUTORS.md) for a full list of all contributors.
 
-![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/StanfordBDHG/.github/main/assets/biodesign-footer-light.png#gh-light-mode-only)
-![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/StanfordBDHG/.github/main/assets/biodesign-footer-dark.png#gh-dark-mode-only)
+![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/SchmiedmayerLab/.github/main/assets/biodesign-footer-light.png#gh-light-mode-only)
+![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/SchmiedmayerLab/.github/main/assets/biodesign-footer-dark.png#gh-dark-mode-only)
