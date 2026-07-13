@@ -526,6 +526,18 @@ html[data-color-scheme="dark"] .chip {
   box-shadow: 0 12px 30px rgba(233, 113, 50, 0.2);
 }
 
+.button--tracker-hfref {
+  background: linear-gradient(135deg, #d97270, #c45452);
+  color: white;
+  box-shadow: 0 12px 30px rgba(177, 79, 77, 0.24);
+}
+
+.button--tracker-hfpef {
+  background: linear-gradient(135deg, #4f7ebd, #335f99);
+  color: white;
+  box-shadow: 0 12px 30px rgba(51, 95, 153, 0.24);
+}
+
 .button--ghost,
 .button--nav {
   border-color: var(--ghost-border);
@@ -1151,6 +1163,14 @@ html[data-color-scheme="dark"] .hero-panel__media .mascot-figure__halo {
   max-width: 44rem;
 }
 
+.callout-band__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: stretch;
+  min-width: 13rem;
+}
+
 html[data-color-scheme="dark"] .callout-band {
   background:
     linear-gradient(135deg, rgba(23, 35, 49, 0.94), rgba(18, 28, 39, 0.82)),
@@ -1165,9 +1185,41 @@ html[data-color-scheme="dark"] .callout-band {
 }
 
 .symptom-grid {
+  margin-top: 0.8rem;
   display: grid;
   gap: 1.2rem;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.mental-health-callout {
+  margin-top: 1rem;
+  margin-bottom: 1.2rem;
+  padding: 1.1rem 1.2rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    135deg,
+    rgba(232, 241, 245, 0.92),
+    rgba(226, 239, 231, 0.92)
+  );
+  border: 1px solid rgba(78, 122, 93, 0.18);
+  box-shadow: 0 16px 28px rgba(16, 36, 58, 0.06);
+}
+
+.mental-health-callout p {
+  margin: 0;
+}
+
+.mental-health-callout p + p {
+  margin-top: 0.55rem;
+}
+
+html[data-color-scheme="dark"] .mental-health-callout {
+  background: linear-gradient(
+    135deg,
+    rgba(25, 42, 54, 0.92),
+    rgba(27, 49, 39, 0.92)
+  );
+  border-color: rgba(196, 223, 202, 0.14);
 }
 
 .symptom-card {
@@ -1265,6 +1317,34 @@ html[data-color-scheme="dark"] .callout-band {
 
 html[data-color-scheme="dark"] .video-card__description {
   color: rgba(236, 242, 248, 0.76);
+}
+
+.video-card__support {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0.9rem 1rem;
+  border-radius: var(--radius-md);
+  background: rgba(232, 241, 245, 0.72);
+  border: 1px solid rgba(16, 36, 58, 0.08);
+}
+
+.video-card__support-text {
+  margin: 0;
+  font-size: 0.98rem;
+  color: rgba(16, 36, 58, 0.82);
+}
+
+.video-card__support-link {
+  justify-self: start;
+}
+
+html[data-color-scheme="dark"] .video-card__support {
+  background: rgba(21, 36, 49, 0.82);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-color-scheme="dark"] .video-card__support-text {
+  color: rgba(236, 242, 248, 0.82);
 }
 
 .page-navigator {
@@ -1570,8 +1650,16 @@ html[data-color-scheme="dark"] .support-ribbon__link {
   height: 3.6rem;
 }
 
+.print-sheet .tracker-table td {
+  height: 3rem;
+}
+
 .tracker-table--wide td {
   height: 5.5rem;
+}
+
+.tracker-table--appointment-log td {
+  height: 11rem;
 }
 
 .hospital-grid {
@@ -1647,6 +1735,10 @@ html[data-color-scheme="dark"] .support-ribbon__link {
   height: calc(100% - 0.9rem);
 }
 
+html[data-color-scheme="dark"] .treatment-card__media {
+  background: linear-gradient(180deg, #1d2b3b, #192330);
+}
+
 .treatment-card__art img {
   display: block;
   width: 100%;
@@ -1655,8 +1747,61 @@ html[data-color-scheme="dark"] .support-ribbon__link {
   object-position: center center;
 }
 
-html[data-color-scheme="dark"] .treatment-card__media {
-  background: linear-gradient(180deg, #1d2b3b, #192330);
+.treatment-card__badge {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 10px 18px rgba(16, 36, 58, 0.14);
+  backdrop-filter: blur(14px);
+}
+
+.treatment-card__badge svg {
+  width: 1.95rem;
+  height: 1.95rem;
+}
+
+.treatment-card__badge--arni-acei-arb {
+  color: #1f5d7d;
+}
+
+.treatment-card__badge--beta-blockers {
+  color: #2f6d31;
+}
+
+.treatment-card__badge--sglt2-inhibitors {
+  color: #b95d10;
+}
+
+.treatment-card__badge--mra {
+  color: #6a2e85;
+}
+
+html[data-color-scheme="dark"] .treatment-card__badge {
+  background: rgba(18, 28, 40, 0.9);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.24);
+}
+
+html[data-color-scheme="dark"] .treatment-card__badge--arni-acei-arb {
+  color: #8bc6ea;
+}
+
+html[data-color-scheme="dark"] .treatment-card__badge--beta-blockers {
+  color: #96d69b;
+}
+
+html[data-color-scheme="dark"] .treatment-card__badge--sglt2-inhibitors {
+  color: #ffbf74;
+}
+
+html[data-color-scheme="dark"] .treatment-card__badge--mra {
+  color: #d9aef2;
 }
 
 .treatment-card__chevron {
@@ -1762,6 +1907,64 @@ html[data-color-scheme="dark"] .treatment-card__media {
   flex-wrap: wrap;
   gap: 0.55rem;
   margin: 1rem 0 1.25rem;
+}
+
+.external-resource-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.external-resource-card__icon {
+  display: inline-grid;
+  place-items: center;
+  min-width: 4.4rem;
+  height: 4.4rem;
+  padding: 0 0.75rem;
+  border-radius: 1.15rem;
+  margin-bottom: 0.4rem;
+  box-shadow: 0 12px 22px rgba(16, 36, 58, 0.1);
+}
+
+.external-resource-card__icon span {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.external-resource-card__icon--aha {
+  background: linear-gradient(160deg, #f6d7d2, #f0b3aa);
+  color: #9a1b1a;
+}
+
+.external-resource-card__icon--hfsa {
+  background: linear-gradient(160deg, #d7ebf4, #b8d9e8);
+  color: #1f5d7d;
+}
+
+.external-resource-card__icon--share {
+  background: linear-gradient(160deg, #e4eed8, #cadfb4);
+  color: #446739;
+}
+
+html[data-color-scheme="dark"] .external-resource-card__icon {
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
+}
+
+html[data-color-scheme="dark"] .external-resource-card__icon--aha {
+  background: linear-gradient(160deg, #67312e, #853834);
+  color: #ffe7e0;
+}
+
+html[data-color-scheme="dark"] .external-resource-card__icon--hfsa {
+  background: linear-gradient(160deg, #254256, #31566d);
+  color: #e3f5ff;
+}
+
+html[data-color-scheme="dark"] .external-resource-card__icon--share {
+  background: linear-gradient(160deg, #334b2d, #47663f);
+  color: #ebf7df;
 }
 
 .site-footer {
@@ -1930,7 +2133,8 @@ html[data-color-scheme="dark"] .focus-card {
 
   .wizard-controls,
   .hero-panel__actions,
-  .goal-summary__actions {
+  .goal-summary__actions,
+  .callout-band__actions {
     flex-direction: column;
   }
 
@@ -2019,6 +2223,14 @@ html[data-color-scheme="dark"] .focus-card {
   .tracker-table th,
   .tracker-table td {
     padding: 0.45rem;
+  }
+
+  .tracker-table--appointment-log {
+    table-layout: fixed;
+  }
+
+  .tracker-table--appointment-log td {
+    height: 6.8rem;
   }
 
   .hospital-grid,

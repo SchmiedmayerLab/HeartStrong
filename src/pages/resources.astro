@@ -21,11 +21,35 @@ const resourceHighlights = [
   },
   {
     title: "Keep video links close by",
-    body: "ENGAGE-HF resources give you a quick way to revisit key topics between visits.",
+    body: "Video resources give you a quick way to revisit key topics between visits.",
   },
   {
     title: "Bring everything back to the booklet",
     body: "Use the site for support, then write important details into your HeartStrong guide.",
+  },
+];
+
+const heartFailureResources = [
+  {
+    title: "American Heart Association",
+    description:
+      "Heart failure tools and resources from the American Heart Association.",
+    href: "https://www.heart.org/en/health-topics/heart-failure/heart-failure-tools-resources",
+    iconLabel: "AHA",
+  },
+  {
+    title: "Heart Failure Society of America",
+    description:
+      "Patient education and support resources from the Heart Failure Society of America.",
+    href: "https://hfsa.org/patient",
+    iconLabel: "HFSA",
+  },
+  {
+    title: "SHARE-HF",
+    description:
+      "Decision-making resource to help you speak with your care team about treatment options.",
+    href: "https://decisionaid.ca/share-hf/",
+    iconLabel: "SHARE",
   },
 ];
 ---
@@ -53,12 +77,54 @@ const resourceHighlights = [
 
   <ResourceLibrary />
 
+  <section class="section-block shell" data-reveal>
+    <div class="section-heading">
+      <p class="eyebrow">Heart Failure Resources</p>
+      <h2>Find trusted education and support tools.</h2>
+      <p>
+        Learn more about heart failure from trusted organizations like the
+        American Heart Association and Heart Failure Society of America.
+      </p>
+    </div>
+
+    <div class="resource-grid">
+      {
+        heartFailureResources.map((item) => (
+          <article class="resource-card surface-card external-resource-card">
+            <div
+              class:list={[
+                "external-resource-card__icon",
+                `external-resource-card__icon--${item.iconLabel.toLowerCase()}`,
+              ]}
+              aria-hidden="true"
+            >
+              <span>{item.iconLabel}</span>
+            </div>
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+            <div class="resource-card__meta">
+              <span class="glass-chip">Opens in a new tab</span>
+            </div>
+            <a
+              class="button button--ghost"
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Open resource
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
   <VideoLibrary
     id="resource-videos"
     placement="resources"
-    eyebrow="ENGAGE-HF video library"
+    eyebrow="Video Library"
     title="Keep learning between appointments."
-    intro="Use these embedded ENGAGE-HF videos when you want a refresher on the app, medicines, symptom tracking, and daily routines that support your heart."
+    intro="Use these embedded videos when you want a refresher on medicines, symptoms, and daily routines that support your heart."
   />
 
   <PageNavigator currentPath="/resources" />

@@ -11,7 +11,6 @@ import HeroPanel from "../components/HeroPanel.astro";
 import PageNavigator from "../components/PageNavigator.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { pageHeroes, siteTitle } from "../data/site";
-import { withBase } from "../lib/urls";
 
 const hero = pageHeroes["/goal-setting"];
 const smartCards = [
@@ -33,11 +32,11 @@ const smartCards = [
 
   <section class="section-block shell" data-reveal>
     <div class="section-heading">
-      <p class="eyebrow">SMART framework</p>
+      <p class="eyebrow">CREATE A GOAL</p>
       <h2>A strong goal is small enough to act on this week.</h2>
       <p>
-        The best goals are practical and connected to your life, not somebody
-        else&apos;s ideal plan. Start with what matters to you right now.
+        The best goals are practical and connected to your life. Start with what
+        matters to you and create a SMART goal.
       </p>
     </div>
 
@@ -65,13 +64,6 @@ const smartCards = [
           appointment more focused and more useful.
         </p>
       </div>
-      <a
-        class="button button--secondary"
-        href={withBase("/resources")}
-        data-astro-prefetch="hover"
-      >
-        Print a tracker
-      </a>
     </div>
   </section>
 

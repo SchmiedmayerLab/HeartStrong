@@ -26,6 +26,8 @@ jobs:
     timeout-minutes: 15
     env:
       ASTRO_TELEMETRY_DISABLED: "1"
+      BASE_PATH: "/"
+      SITE_URL: "https://heartstronger.org"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
