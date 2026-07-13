@@ -74,7 +74,7 @@ To publish it:
 2. In the repository settings, configure Pages to deploy from **GitHub Actions**.
 3. Push to `main` or run the workflow manually.
 
-The Astro configuration automatically uses the repository name as the base path during GitHub Actions builds, so project-site deployments like `https://stanfordbdhg.github.io/HeartStrong/` work without manual path edits.
+The Astro configuration supports both repository-path builds and custom-domain deployments through the GitHub Actions environment, so deployments like `https://heartstronger.org/` work without manual path edits.
 
 ## License
 
@@ -82,8 +82,12 @@ This project is licensed under the MIT License. See [Licenses](LICENSES) for mor
 
 ## Contributors
 
-This project is developed as part of the Stanford Byers Center for Biodesign at Stanford University.
+This project is developed as part of the Schmiedmayer Lab at Stanford University.
 See [CONTRIBUTORS.md](CONTRIBUTORS.md) for a full list of all contributors.
 
-![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/SchmiedmayerLab/.github/main/assets/biodesign-footer-light.png#gh-light-mode-only)
-![Stanford Byers Center for Biodesign Logo](https://raw.githubusercontent.com/SchmiedmayerLab/.github/main/assets/biodesign-footer-dark.png#gh-dark-mode-only)
+## Our Research
+
+For more information, visit the [Schmiedmayer Lab GitHub organization](https://github.com/SchmiedmayerLab).
+
+![Stanford and Stanford Medicine logos](https://raw.githubusercontent.com/SchmiedmayerLab/.github/main/assets/stanford-footer-light.png#gh-light-mode-only)
+![Stanford and Stanford Medicine logos](https://raw.githubusercontent.com/SchmiedmayerLab/.github/main/assets/stanford-footer-dark.png#gh-dark-mode-only)
