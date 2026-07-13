@@ -7,7 +7,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-const defaultRepositoryOwner = "StanfordBDHG";
+const defaultRepositoryOwner = "SchmiedmayerLab";
 const defaultRepositoryName = "HeartStrong";
 const repository =
   process.env.GITHUB_REPOSITORY ??

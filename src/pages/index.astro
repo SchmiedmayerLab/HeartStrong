@@ -27,20 +27,11 @@ const hero = pageHeroes["/"];
   currentPath="/"
   theme="welcome"
 >
-  <HeroPanel hero={hero}>
-    <div class="hero-inline-note surface-card">
-      <h2 class="hero-inline-note__title">Built for everyday use</h2>
-      <p>
-        Open HeartStrong when you want a calm refresher, a printable tracker, or
-        one place to keep the booklet guidance close by.
-      </p>
-    </div>
-  </HeroPanel>
+  <HeroPanel hero={hero} />
 
   <section id="welcome-highlights" class="section-block shell" data-reveal>
     <div class="section-heading">
       <p class="eyebrow">What this site helps you do</p>
-      <h2>Simple guidance that supports the booklet, not replaces it.</h2>
     </div>
 
     <div class="card-grid">
@@ -79,27 +70,6 @@ const hero = pageHeroes["/"];
           </a>
         ))
       }
-    </div>
-  </section>
-
-  <section class="section-block shell" data-reveal>
-    <div class="callout-band">
-      <div class="callout-band__content">
-        <p class="eyebrow">How to use HeartStrong</p>
-        <h3>Bring the website, booklet, and your questions together.</h3>
-        <p>
-          Review a page before your visit, print what you need, and write the
-          important takeaways into your booklet so nothing gets lost between
-          appointments.
-        </p>
-      </div>
-      <a
-        class="button button--primary"
-        href={withBase("/hf-basics")}
-        data-astro-prefetch="hover"
-      >
-        Start with HF basics
-      </a>
     </div>
   </section>
 

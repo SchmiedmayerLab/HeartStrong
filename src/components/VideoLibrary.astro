@@ -66,10 +66,30 @@ const sections = videoSections
                 </div>
 
                 <div class="video-card__body">
-                  <p class="chip chip--tone">ENGAGE-HF video</p>
                   <h3>{video.title}</h3>
-                  <p class="video-card__context">{video.context}</p>
-                  <p class="video-card__description">{video.description}</p>
+                  {video.context && (
+                    <p class="video-card__context">{video.context}</p>
+                  )}
+                  {video.descriptionBold ?
+                    <p class="video-card__description">
+                      <strong>{video.description}</strong>
+                    </p>
+                  : <p class="video-card__description">{video.description}</p>}
+                  <div class="video-card__support">
+                    <p class="video-card__support-text">
+                      To make the video bigger, tap the square in the
+                      lower-right corner of the video. You can also open it on
+                      YouTube.
+                    </p>
+                    <a
+                      class="button button--ghost video-card__support-link"
+                      href={`https://www.youtube.com/watch?v=${video.youtubeId}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open larger on YouTube
+                    </a>
+                  </div>
                 </div>
               </article>
             ))}

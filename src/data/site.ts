@@ -5,11 +5,7 @@
 // SPDX-License-Identifier: MIT
 
 export type RouteName =
-  | "/"
-  | "/hf-basics"
-  | "/goal-setting"
-  | "/treatment-options"
-  | "/resources";
+  "/" | "/hf-basics" | "/goal-setting" | "/treatment-options" | "/resources";
 
 export interface NavItem {
   slug: string;
@@ -92,6 +88,7 @@ export interface VideoItem {
   title: string;
   description: string;
   context: string;
+  descriptionBold?: boolean;
   youtubeId: string;
   placements: VideoPlacement[];
 }
@@ -106,12 +103,7 @@ export interface VideoSection {
 export type VideoPlacement = "hf-basics" | "resources";
 
 export type MascotKey =
-  | "welcome"
-  | "basics"
-  | "goal"
-  | "treatment"
-  | "resources"
-  | "celebrate";
+  "welcome" | "basics" | "goal" | "treatment" | "resources" | "celebrate";
 
 export const siteTitle = "HeartStrong";
 
@@ -148,7 +140,7 @@ export const pageHeroes: Record<RouteName, PageHero> = {
     eyebrow: "Patient Action Guide",
     title: "HeartStrong brings your booklet to life.",
     intro:
-      "Simple education, guided activities, and practical tools to help Veterans understand heart failure and feel more prepared for every appointment.",
+      "Simple education, guided activities, and practical tools to help you understand heart failure and feel more prepared for every appointment.",
     mascotKey: "welcome",
     cta: {
       label: "See how HeartStrong helps",
@@ -167,7 +159,7 @@ export const pageHeroes: Record<RouteName, PageHero> = {
     },
   },
   "/goal-setting": {
-    eyebrow: "SMART Goal Activity",
+    eyebrow: "HEARTSTRONG GOAL",
     title: "Turn what matters most into one clear next step.",
     intro:
       "Choose a goal that fits your life, name what gets in the way, and create a plan you can bring back to your booklet and care team.",
@@ -190,7 +182,7 @@ export const pageHeroes: Record<RouteName, PageHero> = {
   },
   "/resources": {
     eyebrow: "Resource Library",
-    title: "Keep your trackers, videos, and visit prep tools in one place.",
+    title: "Keep resources, trackers, and videos in one place.",
     intro:
       "Use these printables and education links between appointments, then bring what you learn back to your HeartStrong booklet.",
     mascotKey: "resources",
@@ -272,7 +264,7 @@ export const goalPrompts: GoalPrompt[] = [
       "Stay out of the hospital",
       "Live longer",
       "Have more energy",
-      "Reduce meds",
+      "Avoid med side effects",
     ],
   },
   {
@@ -309,7 +301,7 @@ export const medicationClasses: MedicationClass[] = [
     audience: "Often used for HFrEF",
     summary: "Helps lower the pressure your heart works against.",
     whatItDoes:
-      "These medications relax blood vessels and help your heart pump against less pressure. They are often a foundation of treatment when your heart needs extra support.",
+      "These medications relax blood vessels and help your heart pump against less pressure.",
     commonSideEffects: [
       "Dizziness or feeling lightheaded",
       "A change in kidney function",
@@ -350,7 +342,7 @@ export const medicationClasses: MedicationClass[] = [
     summary:
       "Helps the body get rid of extra fluid and may support heart health.",
     whatItDoes:
-      "SGLT2 inhibitors help remove excess fluid and can lower the workload on your heart. They are used for some people with heart failure even when diabetes is not the main issue.",
+      "SGLT2 inhibitors help remove excess fluid and can lower the workload on your heart.",
     commonSideEffects: [
       "Needing to urinate more often",
       "Dehydration if fluid intake is too low",
@@ -368,10 +360,9 @@ export const medicationClasses: MedicationClass[] = [
     slug: "mra",
     title: "MRA",
     audience: "Used in HFrEF and some HFpEF",
-    summary:
-      "Helps reduce fluid strain and supports long-term heart protection.",
+    summary: "Blocks harmful hormones, reducing fluid and strain on the heart.",
     whatItDoes:
-      "MRAs help your body manage excess fluid and reduce some of the stress placed on your heart. Your care team usually keeps an eye on kidney function and potassium while you take them.",
+      "MRAs block the hormone aldosterone, helping the body remove extra salt and water while protecting the heart and kidneys from long-term damage.",
     commonSideEffects: [
       "A change in potassium level",
       "A change in kidney function",
@@ -406,11 +397,10 @@ export const symptomGuide = [
     items: [
       "Weight gain of 3 pounds in a day or 5 pounds in a week",
       "Trouble sleeping or needing more pillows",
-      "Shortness of breath with activity or a dry cough",
+      "Shortness of breath with activity",
       "New dizziness or lightheadedness",
     ],
-    action:
-      "Call your healthcare team and use your symptom tracker to describe the change.",
+    action: "Message or call your care team today.",
   },
   {
     state: "Red: Alert",
@@ -427,46 +417,29 @@ export const symptomGuide = [
 
 export const videoSections: VideoSection[] = [
   {
-    slug: "application",
-    title: "ENGAGE-HF Application",
-    description: "Helpful videos about using the ENGAGE-HF mobile app at home.",
-    videos: [
-      {
-        slug: "engage-welcome",
-        title: "Welcome Video",
-        youtubeId: "EcwB48zjGXM",
-        description:
-          "The ENGAGE-HF app helps you and your care team track your heart health, medicines, symptoms, blood pressure, and weight between visits.",
-        context:
-          "Start here if you want a quick overview of how ENGAGE-HF supports daily check-ins and shared decision-making with your care team.",
-        placements: ["resources"],
-      },
-      {
-        slug: "engage-install-omron",
-        title: "How to Install the App and Connect Omron Devices",
-        youtubeId: "wW03MCNngGA",
-        description:
-          "This video shows how to connect your blood pressure cuff and scale to the ENGAGE-HF app.",
-        context:
-          "Use this when you are setting up home tracking devices or helping someone else get ENGAGE-HF ready.",
-        placements: ["resources"],
-      },
-    ],
-  },
-  {
     slug: "medications",
-    title: "Medication Videos",
+    title: "Heart Failure Medications",
     description:
       "Learn about heart failure medicines, why they matter, and how the core therapy groups support the heart.",
     videos: [
+      {
+        slug: "intro-heart-failure-medications",
+        title: "Introduction to Heart Failure",
+        youtubeId: "-uMPchtoxWQ",
+        description:
+          "A plain-language explanation of what heart failure is, why it is serious, and the symptoms that usually show up first.",
+        context: "",
+        descriptionBold: true,
+        placements: ["hf-basics"],
+      },
       {
         slug: "importance-of-heart-meds",
         title: "Importance of Heart Meds",
         youtubeId: "RDWYlyAMRAo",
         description:
           "An overview of guideline-directed medical therapy and why the four core medication groups help people feel better, live longer, and avoid hospitalization.",
-        context:
-          "Best before or after the medication guide so the four core treatment groups make more sense in plain language.",
+        context: "",
+        descriptionBold: true,
         placements: ["hf-basics", "resources"],
       },
       {
@@ -475,8 +448,8 @@ export const videoSections: VideoSection[] = [
         youtubeId: "XfgcXkq61k0",
         description:
           "Explains how beta blockers help the heart get stronger over time and what side effects to watch for early on.",
-        context:
-          "Helpful if beta blockers are part of your plan and you want a short refresher before your next visit.",
+        context: "",
+        descriptionBold: true,
         placements: ["resources"],
       },
       {
@@ -485,8 +458,8 @@ export const videoSections: VideoSection[] = [
         youtubeId: "iY7I1g5Vxck",
         description:
           "Explains how ACE inhibitors and ARBs reduce strain on the heart, help remove salt and fluid, and relax blood vessels.",
-        context:
-          "A good follow-up when you are learning why blood pressure, kidneys, and potassium matter in heart failure care.",
+        context: "",
+        descriptionBold: true,
         placements: ["resources"],
       },
       {
@@ -495,8 +468,8 @@ export const videoSections: VideoSection[] = [
         youtubeId: "bh-_1GkZmok",
         description:
           "Explains how sacubitril and valsartan work together to lower pressure in the heart and support stronger pumping.",
-        context:
-          "Helpful if your care team has talked about Entresto or ARNI therapy and you want a simple explanation before follow-up.",
+        context: "",
+        descriptionBold: true,
         placements: ["resources"],
       },
       {
@@ -505,8 +478,8 @@ export const videoSections: VideoSection[] = [
         youtubeId: "YhfPNHtvnLk",
         description:
           "Explains how MRAs help manage fluid and protect the heart, along with why potassium checks matter.",
-        context:
-          "Useful when blood work, potassium, or spironolactone/eplerenone comes up during medication changes.",
+        context: "",
+        descriptionBold: true,
         placements: ["resources"],
       },
       {
@@ -515,8 +488,8 @@ export const videoSections: VideoSection[] = [
         youtubeId: "SKrk3OuIiyE",
         description:
           "Explains how SGLT2 inhibitors help lower heart pressure by removing extra water and sugar through the kidneys.",
-        context:
-          "A strong fit if you want to understand why this medicine may be used even when diabetes is not the main issue.",
+        context: "",
+        descriptionBold: true,
         placements: ["resources"],
       },
       {
@@ -525,8 +498,8 @@ export const videoSections: VideoSection[] = [
         youtubeId: "16UFTq-mZro",
         description:
           "Explains how water pills reduce swelling and breathing trouble, and why doses may change based on symptoms and labs.",
-        context:
-          "Helpful when swelling, breathing changes, or sudden weight gain make you wonder whether fluid is building up.",
+        context: "",
+        descriptionBold: true,
         placements: ["resources"],
       },
     ],
@@ -538,23 +511,13 @@ export const videoSections: VideoSection[] = [
       "Learn how daily monitoring and day-to-day habits support heart failure care between visits.",
     videos: [
       {
-        slug: "intro-heart-failure",
-        title: "Introduction to Heart Failure",
-        youtubeId: "-uMPchtoxWQ",
-        description:
-          "A plain-language explanation of what heart failure is, why it is serious, and the symptoms that usually show up first.",
-        context:
-          "Watch this first if you want a simple explanation of what heart failure means and what changes to notice early.",
-        placements: ["hf-basics", "resources"],
-      },
-      {
         slug: "blood-pressure-monitoring",
         title: "Blood Pressure Monitoring",
         youtubeId: "KBbePdLbwUE",
         description:
           "Explains why blood pressure trends matter in heart failure and how daily checks can guide medication decisions.",
-        context:
-          "Use this when you start tracking your numbers at home or want more context for blood pressure changes during med adjustments.",
+        context: "",
+        descriptionBold: true,
         placements: ["resources"],
       },
       {
@@ -563,8 +526,8 @@ export const videoSections: VideoSection[] = [
         youtubeId: "p1fHRIt8Sxc",
         description:
           "Explains why sudden weight gain can signal fluid retention and when to call your care team about changes.",
-        context:
-          "Helpful when you begin using the vitals tracker or want a clearer reason for daily weight checks.",
+        context: "",
+        descriptionBold: true,
         placements: ["hf-basics", "resources"],
       },
       {
@@ -573,9 +536,9 @@ export const videoSections: VideoSection[] = [
         youtubeId: "8ETOXtCyO9k",
         description:
           "Explains how lower-salt eating and gradual activity can support breathing, energy, and heart strength.",
-        context:
-          "A good follow-up when you want practical lifestyle guidance that fits the rest of your treatment plan.",
-        placements: ["resources"],
+        context: "",
+        descriptionBold: true,
+        placements: ["hf-basics"],
       },
     ],
   },
@@ -591,9 +554,9 @@ export const videoSections: VideoSection[] = [
         youtubeId: "5TqT6OMnCbE",
         description:
           "Explains the KCCQ-12 symptom survey and how repeated check-ins help your care team understand how you are doing over time.",
-        context:
-          "Best when you want to understand why symptom surveys matter and how they can shape discussions with your care team.",
-        placements: ["resources"],
+        context: "",
+        descriptionBold: true,
+        placements: ["hf-basics", "resources"],
       },
       {
         slug: "dizziness",
@@ -601,8 +564,8 @@ export const videoSections: VideoSection[] = [
         youtubeId: "d_MVN08JdTs",
         description:
           "Explains common reasons dizziness happens in heart failure and offers tips that can make it easier to manage safely.",
-        context:
-          "Good to review if symptoms, blood pressure changes, or medications are leaving you lightheaded or unsteady.",
+        context: "",
+        descriptionBold: true,
         placements: ["hf-basics", "resources"],
       },
     ],
@@ -633,21 +596,5 @@ export const resourceItems: ResourceItem[] = [
     href: "/printables/hospital-visits",
     description:
       "Track what happened during an emergency or hospital visit, including medication changes and follow-up plans.",
-  },
-  {
-    slug: "share-hf",
-    title: "SHARE-HF decision aid",
-    kind: "external",
-    href: "https://decisionaid.ca/share-hf/",
-    description:
-      "Shared decision-making resource to help patients and care teams talk through treatment options together.",
-  },
-  {
-    slug: "crisis-line",
-    title: "Veterans Crisis Line",
-    kind: "guide",
-    href: "https://www.veteranscrisisline.net/",
-    description:
-      "Immediate support for Veterans in crisis. Call 988 and press 1, text 838255, or chat online.",
   },
 ];

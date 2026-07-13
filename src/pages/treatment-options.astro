@@ -10,6 +10,7 @@ import HeroPanel from "../components/HeroPanel.astro";
 import PageNavigator from "../components/PageNavigator.astro";
 import TreatmentExplorer from "../components/TreatmentExplorer.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { withBase } from "../lib/urls";
 import { pageHeroes, siteTitle } from "../data/site";
 
 const hero = pageHeroes["/treatment-options"];
@@ -75,6 +76,83 @@ const medTips = [
   </section>
 
   <TreatmentExplorer />
+
+  <section class="section-block shell" data-reveal>
+    <div class="section-heading">
+      <p class="eyebrow">Other medications you might hear about</p>
+      <h2>
+        Some people are prescribed additional medications beyond the core
+        groups.
+      </h2>
+      <p>
+        These do not replace the four main classes. Your care team may add them
+        when they fit your symptoms, heart function, blood pressure, weight, or
+        overall treatment plan.
+      </p>
+    </div>
+
+    <div class="two-column">
+      <article class="surface-card">
+        <p class="eyebrow">For HFrEF</p>
+        <ul>
+          <li>
+            <strong>Hydralazine and isosorbide dinitrate:</strong> Helps relax blood
+            vessels and reduce strain on the heart.
+          </li>
+          <li>
+            <strong>Vericiguat:</strong> May be used for some people with HFrEF who
+            still have symptoms or have needed recent hospital care.
+          </li>
+        </ul>
+      </article>
+
+      <article class="surface-card">
+        <p class="eyebrow">For HFpEF</p>
+        <ul>
+          <li>
+            <strong>GLP-1 agonists:</strong> GLP-1 agonists, such as semaglutide or
+            tirzepatide, may be used for some people with HFpEF. They may be discussed
+            when weight, blood sugar, or overall metabolic health is part of the plan.
+          </li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="section-block shell" data-reveal>
+    <div class="callout-band">
+      <div class="callout-band__content">
+        <p class="eyebrow">Bring your tracker</p>
+        <h3>
+          Fill out your medication tracker for HFrEF or HFpEF and bring it to
+          every appointment.
+        </h3>
+        <p>
+          Your care works best when you are part of the team. Use the booklet
+          and the resource page together so medication questions are easy to
+          carry into each visit.
+        </p>
+      </div>
+      <div class="callout-band__actions">
+        <a
+          class="button button--tracker-hfref"
+          href={withBase("/assets/trackers/hfref-medication-tracker.pdf")}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          HFrEF Tracker
+        </a>
+        <a
+          class="button button--tracker-hfpef"
+          href={withBase("/assets/trackers/hfpef-medication-tracker.pdf")}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          HFpEF Tracker
+        </a>
+      </div>
+    </div>
+  </section>
 
   <section class="section-block shell" data-reveal>
     <div class="section-heading">

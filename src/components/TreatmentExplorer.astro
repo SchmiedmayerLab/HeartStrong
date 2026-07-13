@@ -74,6 +74,88 @@ import { withBase } from "../lib/urls";
                     aria-hidden="true"
                   />
                 </picture>
+                <div
+                  class:list={[
+                    "treatment-card__badge",
+                    `treatment-card__badge--${item.slug}`,
+                  ]}
+                  aria-hidden="true"
+                >
+                  {item.slug === "arni-acei-arb" && (
+                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                      <path
+                        d="M32 12c8.5 0 16 5.9 17.8 14.2 2 9.5-4.1 18.9-13.6 20.9l-4.2 8.7-4.2-8.7C18.3 45.1 12.2 35.7 14.2 26.2 16 17.9 23.5 12 32 12Z"
+                        fill="currentColor"
+                        opacity="0.18"
+                      />
+                      <path
+                        d="M22 29h20M26 23l-4 6 4 6M38 23l4 6-4 6"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="4"
+                      />
+                    </svg>
+                  )}
+                  {item.slug === "beta-blockers" && (
+                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                      <circle
+                        cx="32"
+                        cy="32"
+                        r="18"
+                        fill="currentColor"
+                        opacity="0.12"
+                      />
+                      <path
+                        d="M18 33h8l5-9 6 17 4-8h5"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="4"
+                      />
+                    </svg>
+                  )}
+                  {item.slug === "sglt2-inhibitors" && (
+                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                      <path
+                        d="M32 12c8 10.1 12 16 12 23.1C44 43.4 38.6 49 32 49s-12-5.6-12-13.9C20 28 24 22.1 32 12Z"
+                        fill="currentColor"
+                        opacity="0.16"
+                      />
+                      <path
+                        d="M32 19v22M23 32l9 9 9-9"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="4"
+                      />
+                    </svg>
+                  )}
+                  {item.slug === "mra" && (
+                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                      <circle
+                        cx="32"
+                        cy="32"
+                        r="18"
+                        fill="currentColor"
+                        opacity="0.12"
+                      />
+                      <path
+                        d="M20 26h24M32 26v18M24 44h16"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="4"
+                      />
+                      <circle cx="24" cy="26" r="4" fill="currentColor" />
+                      <circle cx="40" cy="26" r="4" fill="currentColor" />
+                    </svg>
+                  )}
+                </div>
               </div>
               <div class="treatment-card__summary">
                 <p class="chip chip--tone">{item.audience}</p>
@@ -123,28 +205,6 @@ import { withBase } from "../lib/urls";
         );
       })
     }
-  </div>
-
-  <div class="callout-band" data-reveal>
-    <div class="callout-band__content">
-      <p class="eyebrow">Bring your tracker</p>
-      <h3>
-        Fill out your medication tracker for HFrEF or HFpEF and bring it to
-        every appointment.
-      </h3>
-      <p>
-        Your care works best when you are part of the team. Use the booklet and
-        the resource page together so medication questions are easy to carry
-        into each visit.
-      </p>
-    </div>
-    <a
-      class="button button--primary"
-      href={withBase("/resources#resource-library")}
-      data-astro-prefetch="hover"
-    >
-      Open support tools
-    </a>
   </div>
 
   <script>

@@ -61,16 +61,10 @@ describe("navigation helpers", () => {
 
   it("resolves URLs correctly for GitHub Pages project-site metadata", () => {
     expect(
-      resolveSiteUrl(
-        "https://stanfordbdhg.github.io/HeartStrong",
-        "/resources",
-      ).toString(),
-    ).toBe("https://stanfordbdhg.github.io/HeartStrong/resources");
-    expect(
-      resolveSiteUrl(
-        "https://stanfordbdhg.github.io/HeartStrong",
-        "/",
-      ).toString(),
-    ).toBe("https://stanfordbdhg.github.io/HeartStrong/");
+      resolveSiteUrl("https://heartstronger.org/", "/resources").toString(),
+    ).toBe("https://heartstronger.org/resources");
+    expect(resolveSiteUrl("https://heartstronger.org/", "/").toString()).toBe(
+      "https://heartstronger.org/",
+    );
   });
 });
