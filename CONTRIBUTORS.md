@@ -1,11 +1,11 @@
 <!--
-This source file is part of the Stanford HeartStrong open-source project
+This source file is part of the HeartStrong open-source project
 
 SPDX-FileCopyrightText: 2026 Stanford University and the project authors (see CONTRIBUTORS.md)
 
 SPDX-License-Identifier: MIT
 -->
 
-# Contributors
+# HeartStrong Contributors
 
 - [Paul Schmiedmayer](https://github.com/PSchmiedmayer)
