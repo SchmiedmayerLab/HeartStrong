@@ -39,22 +39,22 @@
   "dependencies": {
     "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
-    "astro": "^7.1.6"
+    "astro": "^7.2.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
     "@astrojs/sitemap": "^3.7.3",
     "@stanfordspezi/spezi-web-configurations": "^0.7.0",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.2.0",
     "@vitest/coverage-v8": "^4.1.10",
-    "eslint": "^9.39.5",
+    "eslint": "^10.8.1",
     "eslint-import-resolver-typescript": "^4.4.5",
-    "eslint-plugin-astro": "^1.7.0",
-    "globals": "^17.8.0",
+    "eslint-plugin-astro": "^3.1.0",
+    "globals": "^17.9.0",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   }
 }
