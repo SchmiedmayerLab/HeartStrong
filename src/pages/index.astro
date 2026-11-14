@@ -35,14 +35,12 @@ const hero = pageHeroes["/"];
     </div>
 
     <div class="card-grid">
-      {
-        welcomeHighlights.map((item) => (
-          <article class="surface-card">
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </article>
-        ))
-      }
+      {welcomeHighlights.map((item) => (
+        <article class="surface-card">
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </article>
+      ))}
     </div>
   </section>
 
@@ -57,19 +55,17 @@ const hero = pageHeroes["/"];
     </div>
 
     <div class="card-grid card-grid--four">
-      {
-        focusAreaCards.map((item) => (
-          <a
-            class="focus-card"
-            href={withBase(item.href)}
-            data-astro-prefetch="hover"
-          >
-            <p class="eyebrow">{item.title}</p>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </a>
-        ))
-      }
+      {focusAreaCards.map((item) => (
+        <a
+          class="focus-card"
+          href={withBase(item.href)}
+          data-astro-prefetch="hover"
+        >
+          <p class="eyebrow">{item.title}</p>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+        </a>
+      ))}
     </div>
   </section>
 
@@ -86,8 +82,8 @@ const hero = pageHeroes["/"];
         <p class="eyebrow">Veterans Crisis Line</p>
         <h3>Call {quickSupport.crisisPhone}</h3>
         <p>
-          Text {quickSupport.crisisText} or visit the official crisis line site for
-          immediate help.
+          Text {quickSupport.crisisText} or visit the official crisis line site
+          for immediate help.
         </p>
         <a
           class="button button--ghost"

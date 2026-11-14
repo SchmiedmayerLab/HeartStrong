@@ -24,15 +24,13 @@ import { withBase } from "../lib/urls";
     <div class="site-footer__column">
       <p class="eyebrow">Explore</p>
       <ul class="footer-links">
-        {
-          navItems.map((item) => (
-            <li>
-              <a href={withBase(item.href)} data-astro-prefetch="hover">
-                {item.title}
-              </a>
-            </li>
-          ))
-        }
+        {navItems.map((item) => (
+          <li>
+            <a href={withBase(item.href)} data-astro-prefetch="hover">
+              {item.title}
+            </a>
+          </li>
+        ))}
       </ul>
     </div>
 
@@ -50,9 +48,13 @@ import { withBase } from "../lib/urls";
         <strong>Text:</strong>
         {quickSupport.crisisText}
       </p>
-      <a href={quickSupport.crisisUrl} target="_blank" rel="noopener noreferrer"
-        >Open crisis support</a
+      <a
+        href={quickSupport.crisisUrl}
+        target="_blank"
+        rel="noopener noreferrer"
       >
+        Open crisis support
+      </a>
     </div>
   </div>
 </footer>

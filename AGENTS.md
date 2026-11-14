@@ -112,13 +112,13 @@ Manual QA after UI changes:
 - Keep markdown links valid.
 - Do not bypass failing CI.
 - Fix root causes instead of suppressing lint or type errors.
-- Use the shared Stanford Spezi web linting setup already in the repo.
+- Use the shared Grove web linting setup already in the repo.
 - Run `npm run validate` before finishing meaningful changes.
 
 Dependency updates need extra care:
 
 - Do not blindly accept major version bumps.
-- Verify peer compatibility for Astro, TypeScript, ESLint, and `@stanfordspezi/spezi-web-configurations`.
+- Verify peer compatibility for Astro, TypeScript, ESLint, and `@schmiedmayerlab/grove-configurations`.
 - If a dependency PR fails CI, check peer dependency constraints before changing repo code.
 
 Deployment model:

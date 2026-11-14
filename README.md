@@ -37,7 +37,7 @@ It follows the booklet structure with dedicated pages for:
 - Small vanilla TypeScript modules for interactive behaviors
 - [Fontsource](https://fontsource.org/) for self-hosted web fonts
 - [Vitest](https://vitest.dev) for local automated testing
-- [ESLint](https://eslint.org) and [Prettier](https://prettier.io/) via the shared [Stanford Spezi web configuration package](https://github.com/StanfordSpezi/spezi-web-configurations), with Astro-specific overrides kept local
+- [ESLint](https://eslint.org) and [Prettier](https://prettier.io/) via the shared [Grove web configuration package](https://github.com/SchmiedmayerLab/grove-ts/tree/main/packages/configurations), with Astro-specific overrides kept local
 - GitHub Actions for CI, CodeQL, markdown link checking, REUSE compliance, sitemap generation, and GitHub Pages deployment
 
 ## Local Development

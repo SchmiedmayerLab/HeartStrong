@@ -63,11 +63,9 @@ const sitemapUrl =
     <meta name="twitter:description" content={description} />
     <link rel="icon" href={withBase("/favicon.svg")} type="image/svg+xml" />
     {canonicalUrl && <link rel="canonical" href={canonicalUrl.toString()} />}
-    {
-      canonicalUrl && (
-        <meta property="og:url" content={canonicalUrl.toString()} />
-      )
-    }
+    {canonicalUrl && (
+      <meta property="og:url" content={canonicalUrl.toString()} />
+    )}
     {sitemapUrl && <link rel="sitemap" href={sitemapUrl.toString()} />}
     <script is:inline>
       (() => {
@@ -102,7 +100,9 @@ const sitemapUrl =
     <ClientRouter fallback="swap" />
   </head>
   <body class="site-body" data-theme={theme}>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content">
+      Skip to content
+    </a>
     <SiteHeader currentPath={currentPath} />
     <SupportRibbon />
     <main id="main-content" class="site-main">

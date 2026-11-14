@@ -21,35 +21,33 @@ import { withBase } from "../lib/urls";
   </div>
 
   <div class="resource-grid">
-    {
-      resourceItems.map((item) => {
-        const isPrintable = item.kind === "printable";
-        const isExternal =
-          item.href.startsWith("http://") || item.href.startsWith("https://");
+    {resourceItems.map((item) => {
+      const isPrintable = item.kind === "printable";
+      const isExternal =
+        item.href.startsWith("http://") || item.href.startsWith("https://");
 
-        return (
-          <article class="resource-card surface-card">
-            <p class="chip chip--tone">{item.kind}</p>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-            <div class="resource-card__meta">
-              {isPrintable && <span class="glass-chip">Print friendly</span>}
-              {isExternal && <span class="glass-chip">Opens in a new tab</span>}
-            </div>
-            <a
-              class="button button--ghost"
-              href={withBase(item.href)}
-              data-astro-prefetch={
-                !isExternal && isPrintable ? "hover" : undefined
-              }
-              target={isExternal ? "_blank" : undefined}
-              rel={isExternal ? "noopener noreferrer" : undefined}
-            >
-              Open resource
-            </a>
-          </article>
-        );
-      })
-    }
+      return (
+        <article class="resource-card surface-card">
+          <p class="chip chip--tone">{item.kind}</p>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <div class="resource-card__meta">
+            {isPrintable && <span class="glass-chip">Print friendly</span>}
+            {isExternal && <span class="glass-chip">Opens in a new tab</span>}
+          </div>
+          <a
+            class="button button--ghost"
+            href={withBase(item.href)}
+            data-astro-prefetch={
+              !isExternal && isPrintable ? "hover" : undefined
+            }
+            target={isExternal ? "_blank" : undefined}
+            rel={isExternal ? "noopener noreferrer" : undefined}
+          >
+            Open resource
+          </a>
+        </article>
+      );
+    })}
   </div>
 </section>
