@@ -1,9 +1,9 @@
 // SPDX-FileCopyrightText: 2026 Schmiedmayer Lab and the project authors (see CONTRIBUTORS.md)
 // SPDX-License-Identifier: MIT
 
-// Deployment requires a separate destination and content review.
+// Publish through the validated release or manual deployment workflow.
 export const publishing = {
-  enabled: false,
+  enabled: true,
   destination: "https://heartstronger.org/",
   publicPages: [
     "index.html",
