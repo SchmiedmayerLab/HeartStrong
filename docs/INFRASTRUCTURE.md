@@ -1,11 +1,14 @@
 # Website infrastructure
 
-Baseline: WebsiteTemplate revision `f0e1c06b442b1416f57309ccd8bfcbe58bc0c31d`.
+Baseline: WebsiteTemplate revision `5bcfe28699ed03152c839bed9279c8ed9d62eac2`.
 
 Use the exact Node and npm versions declared in this repository. Keep the
 Playwright package and browser-container version and digest synchronized.
 Run `npm run validate`, the configured browser tests, and `npm audit` before
 proposing changes. Repository-subpath checks exercise a separate build.
+
+ESLint and Prettier use `@schmiedmayerlab/grove-configurations`. Keep local
+rule exceptions in `eslint.config.mjs` together with their reason.
 
 Weekly version updates are grouped across npm and GitHub Actions. Security
 updates have their own groups; TypeScript remains below 6.1 until peer support

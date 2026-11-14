@@ -10,8 +10,8 @@ SPDX-License-Identifier: MIT
 
 # HeartStrong
 
-[![Build and Test](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/build-and-test.yml)
-[![Deployment](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/deploy-pages.yml)
+[![Build and Test](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/check.yml/badge.svg)](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/check.yml)
+[![Deployment](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/pages.yml/badge.svg)](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/pages.yml)
 [![CodeQL](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/codeql.yml/badge.svg)](https://github.com/SchmiedmayerLab/HeartStrong/actions/workflows/codeql.yml)
 [![REUSE status](https://api.reuse.software/badge/github.com/SchmiedmayerLab/HeartStrong)](https://api.reuse.software/info/github.com/SchmiedmayerLab/HeartStrong)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)

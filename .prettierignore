@@ -7,7 +7,6 @@
 .astro
 coverage
 dist
-eslint_report.json
 node_modules
 package-lock.json
 

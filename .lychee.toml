@@ -1,0 +1,16 @@
+# This source file is part of the HeartStrong open-source project
+#
+# SPDX-FileCopyrightText: 2026 Stanford University and the project authors (see CONTRIBUTORS.md)
+#
+# SPDX-License-Identifier: MIT
+
+cache = true
+max_cache_age = "2d"
+max_retries = 3
+retry_wait_time = 2
+timeout = 20
+scheme = ["https", "http"]
+accept = [200, 204, 206, 403, 429]
+exclude_loopback = true
+include_mail = false
+exclude_path = ["node_modules", "dist/pagefind", "LICENSES"]
