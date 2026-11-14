@@ -39,3 +39,11 @@ yarn-error.log*
 .env
 .env.*
 !.env.example
+
+_site/
+
+release-manifest.json
+
+playwright-report/
+
+test-results/

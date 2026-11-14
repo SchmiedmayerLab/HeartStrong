@@ -33,9 +33,20 @@ const {
   robots = "index,follow",
 } = Astro.props;
 const canonicalUrl =
-  Astro.site ? resolveSiteUrl(Astro.site, currentPath) : undefined;
+  Astro.site ?
+    resolveSiteUrl(
+      Astro.site,
+      withBase(
+        currentPath === "/404" ? "/404.html" : (
+          `${currentPath.replace(/\/$/, "")}/`
+        ),
+      ),
+    )
+  : undefined;
 const sitemapUrl =
-  Astro.site ? resolveSiteUrl(Astro.site, "/sitemap-index.xml") : undefined;
+  Astro.site ?
+    resolveSiteUrl(Astro.site, withBase("/sitemap-index.xml"))
+  : undefined;
 ---
 
 <!doctype html>
@@ -105,7 +116,7 @@ const sitemapUrl =
     </a>
     <SiteHeader currentPath={currentPath} />
     <SupportRibbon />
-    <main id="main-content" class="site-main">
+    <main tabindex="-1" id="main-content" class="site-main">
       <slot />
     </main>
     <SiteFooter />

@@ -6,37 +6,91 @@
 
 name: CodeQL
 
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "17 13 * * 1"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
-on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  schedule:
-    - cron: "0 8 * * 1"
-
 jobs:
+  availability:
+    name: Detect code scanning availability
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    outputs:
+      enabled: ${{ steps.code-scanning.outputs.enabled }}
+      visibility: ${{ steps.code-scanning.outputs.visibility }}
+      code-security: ${{ steps.code-scanning.outputs.code-security }}
+    steps:
+      - name: Check repository security capabilities
+        id: code-scanning
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          visibility="$(gh api -H 'X-GitHub-Api-Version: 2026-03-10' "repos/${REPOSITORY}" --jq '.visibility')"
+          code_security="$(gh api -H 'X-GitHub-Api-Version: 2026-03-10' "repos/${REPOSITORY}" --jq '.security_and_analysis.code_security.status // .security_and_analysis.advanced_security.status // "unavailable"')"
+
+          echo "visibility=${visibility}" >> "${GITHUB_OUTPUT}"
+          echo "code-security=${code_security}" >> "${GITHUB_OUTPUT}"
+
+          if [[ "${visibility}" == 'public' || "${code_security}" == 'enabled' ]]; then
+            echo 'enabled=true' >> "${GITHUB_OUTPUT}"
+            echo '::notice title=Code scanning available::The CodeQL analysis job will run.'
+          else
+            echo 'enabled=false' >> "${GITHUB_OUTPUT}"
+            echo "::notice title=Code scanning unavailable::CodeQL is intentionally skipped because GitHub Code Security is not enabled for this ${visibility} repository."
+          fi
+
   analyze:
-    name: Analyze
+    name: Analyze JavaScript and TypeScript
+    needs: availability
+    if: ${{ needs.availability.outputs.enabled == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     permissions:
+      contents: read
       security-events: write
       packages: read
-      actions: read
     steps:
-      - name: Checkout repository
+      - name: Check out repository
         uses: actions/checkout@v7
-
+        with:
+          persist-credentials: false
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4
         with:
           languages: javascript-typescript
           build-mode: none
-
-      - name: Perform CodeQL analysis
+      - name: Analyze
         uses: github/codeql-action/analyze@v4
+
+  unavailable:
+    name: Analysis intentionally skipped
+    needs: availability
+    if: ${{ needs.availability.outputs.enabled != 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Explain why CodeQL did not run
+        env:
+          CODE_SECURITY: ${{ needs.availability.outputs.code-security }}
+          REPOSITORY_VISIBILITY: ${{ needs.availability.outputs.visibility }}
+        run: |
+          echo "CodeQL requires GitHub Code Security for this ${REPOSITORY_VISIBILITY} repository."
+          echo "Detected GitHub Code Security status: ${CODE_SECURITY}."
+          echo 'The workflow will begin analyzing automatically if the repository becomes public or GitHub Code Security is enabled.'
