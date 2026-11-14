@@ -16,12 +16,7 @@ export default [
     languageOptions: { globals: globals.node },
   },
   {
-    ignores: [
-      ".astro/**",
-      "_site/**",
-      "release-manifest.json",
-      "eslint_report.json",
-    ],
+    ignores: [".astro/**", "_site/**", "release-manifest.json"],
   },
   {
     settings: {
@@ -83,6 +78,37 @@ export default [
     files: ["**/*.astro"],
     rules: {
       "astro/no-set-html-directive": "error",
+    },
+  },
+  {
+    files: ["**/*.ts"],
+    rules: {
+      // Empty strings in content and configuration fields mean "not provided".
+      "@typescript-eslint/prefer-nullish-coalescing": [
+        "error",
+        { ignorePrimitives: { string: true } },
+      ],
+    },
+  },
+  {
+    files: ["tests/**/*.ts"],
+    rules: {
+      // Tests read parsed JSON and DOM nodes whose shape the assertions verify,
+      // stub asynchronous interfaces, and use insecure URLs as rejected input.
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-unsafe-argument": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-call": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off",
+      "@typescript-eslint/require-await": "off",
+      "sonarjs/no-clear-text-protocols": "off",
+    },
+  },
+  {
+    files: ["tests/e2e/**/*.ts"],
+    rules: {
+      // Playwright skips here are conditional on the browser project or site content.
+      "sonarjs/no-skipped-tests": "off",
     },
   },
   {

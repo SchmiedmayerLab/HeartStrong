@@ -19,7 +19,7 @@
 .eslintcache
 .prettier-cache
 *.tsbuildinfo
-eslint_report.json
+.lycheecache
 
 # logs
 *.log

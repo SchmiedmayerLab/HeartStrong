@@ -1,0 +1,52 @@
+# This source file is part of the HeartStrong open-source project
+#
+# SPDX-FileCopyrightText: 2026 Stanford University and the project authors (see CONTRIBUTORS.md)
+#
+# SPDX-License-Identifier: MIT
+
+name: External link audit
+
+on:
+  schedule:
+    - cron: "43 12 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  links:
+    name: Check external website and documentation links
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Use Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Use the declared npm version
+        run: npm install --global "$(node --print 'require("./package.json").packageManager')"
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Build static site
+        run: npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: "1"
+          # Lychee resolves root-relative URLs against dist, independent of a Pages project path.
+          SITE_BASE: ""
+      - name: Check website and documentation links with retry and cache
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --config .lychee.toml
+            --root-dir '${{ github.workspace }}/dist'
+            './dist/**/*.html'
+            './**/*.md'
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

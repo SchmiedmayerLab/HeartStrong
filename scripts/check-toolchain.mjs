@@ -9,7 +9,7 @@ const read = (path) =>
 const pkg = JSON.parse(read("package.json"));
 const lock = JSON.parse(read("package-lock.json"));
 const version = lock.packages["node_modules/@playwright/test"].version;
-const workflow = read(".github/workflows/build-and-test.yml");
+const workflow = read(".github/workflows/check.yml");
 const images = [
   ...workflow.matchAll(
     /mcr\.microsoft\.com\/playwright:v([^\s]+)-noble@sha256:([a-f0-9]{64})/g,
