@@ -40,14 +40,21 @@ function visitHtml(node, callback) {
   if (node.content) visitHtml(node.content, callback);
 }
 
+function htmlText(value) {
+  let text = "";
+  visitHtml(parseFragment(value), (node) => {
+    if (node.nodeName === "#text") text += node.value;
+  });
+  return text;
+}
+
 function inlineText(token) {
   return (token.children ?? [])
     .map((child) => {
       if (["text", "code_inline", "emoji"].includes(child.type))
         return child.content;
       if (child.type === "image") return child.content;
-      if (child.type === "html_inline")
-        return child.content.replace(/<[^>]*>/g, "");
+      if (child.type === "html_inline") return htmlText(child.content);
       return "";
     })
     .join("")
