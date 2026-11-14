@@ -15,6 +15,8 @@ Production deployment is separate from merging source changes. Manual dispatch
 must use `main`; release workflows accept stable releases belonging to `main`.
 Verify destination, content, and required environment approvals before deploying.
 Publishing configuration does not grant approval to release new content.
+[RELEASES.md](RELEASES.md) documents the shared tag-based release procedure;
+website releases do not require npm package-version changes.
 
 Site-specific content, routes, public-data schemas, assets, and product tests
 remain local. Review those adapters when adopting later template changes.

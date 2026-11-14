@@ -70,10 +70,13 @@ npm run validate
 
 ## Deployment
 
-Merging source changes runs CI without deploying. Publishing is disabled in
-`publishing.config.mjs` until a separate destination and public-content review.
-After approval, enable publishing and use a manual workflow dispatch from `main`
-or a stable `vMAJOR.MINOR.PATCH` release whose commit belongs to `main`.
+Merging source changes runs CI without deploying. Publishing is configured for
+`https://heartstronger.org/` in `publishing.config.mjs`. After release approval, use a
+manual workflow dispatch from `main` or publish a stable `vMAJOR.MINOR.PATCH`
+release whose commit belongs to `main`. Release tags identify website versions;
+`package.json` does not need a matching version because this package is not
+published to npm. See [docs/RELEASES.md](docs/RELEASES.md) for setup, releases,
+and rollback.
 
 The configured destination must exactly match GitHub Pages. CI packages approved
 pages and their assets into `_site/`; browsers test that artifact, deployment
