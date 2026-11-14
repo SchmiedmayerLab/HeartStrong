@@ -51,9 +51,9 @@ const supportPrompt = getGoalPrompt("support");
     <div class="goal-wizard-shell__body">
       <form class="goal-wizard" data-goal-wizard>
         <div class="goal-progress">
-          <span class="goal-progress__label" data-progress-label
-            >Step 1 of 5</span
-          >
+          <span class="goal-progress__label" data-progress-label>
+            Step 1 of 5
+          </span>
           <div class="goal-progress__track">
             <span class="goal-progress__fill" data-progress-fill></span>
           </div>
@@ -62,24 +62,22 @@ const supportPrompt = getGoalPrompt("support");
         <fieldset class="wizard-step is-active" data-step>
           <legend>{priorityPrompt.label}</legend>
           <div class="choice-pill-group">
-            {
-              priorityPrompt.options?.map((option) => (
-                <button
-                  type="button"
-                  class="choice-pill"
-                  data-priority-choice
-                  data-value={option}
-                  aria-pressed="false"
-                >
-                  {option}
-                </button>
-              ))
-            }
+            {priorityPrompt.options?.map((option) => (
+              <button
+                type="button"
+                class="choice-pill"
+                data-priority-choice
+                data-value={option}
+                aria-pressed="false"
+              >
+                {option}
+              </button>
+            ))}
           </div>
           <input type="hidden" name="priority" />
-          <label class="field-label" for="priorityCustom"
-            >{customPrompt.label}</label
-          >
+          <label class="field-label" for="priorityCustom">
+            {customPrompt.label}
+          </label>
           <input
             id="priorityCustom"
             name="priorityCustom"
@@ -90,21 +88,35 @@ const supportPrompt = getGoalPrompt("support");
 
         <fieldset class="wizard-step" data-step hidden>
           <legend>{barrierPrompt.label}</legend>
-          <label class="field-label" for="barrier">Barrier</label>
-          <textarea id="barrier" name="barrier" class="text-area" rows="5"
+          <label class="field-label" for="barrier">
+            Barrier
+          </label>
+          <textarea
+            id="barrier"
+            name="barrier"
+            class="text-area"
+            rows="5"
           ></textarea>
         </fieldset>
 
         <fieldset class="wizard-step" data-step hidden>
           <legend>{actionPrompt.label}</legend>
-          <label class="field-label" for="action">One next action</label>
-          <textarea id="action" name="action" class="text-area" rows="5"
+          <label class="field-label" for="action">
+            One next action
+          </label>
+          <textarea
+            id="action"
+            name="action"
+            class="text-area"
+            rows="5"
           ></textarea>
         </fieldset>
 
         <fieldset class="wizard-step" data-step hidden>
           <legend>{frequencyPrompt.label}</legend>
-          <label class="field-label" for="frequency">Frequency</label>
+          <label class="field-label" for="frequency">
+            Frequency
+          </label>
           <input
             id="frequency"
             name="frequency"
@@ -115,18 +127,24 @@ const supportPrompt = getGoalPrompt("support");
 
         <fieldset class="wizard-step" data-step hidden>
           <legend>{supportPrompt.label}</legend>
-          <label class="field-label" for="support">Support</label>
-          <textarea id="support" name="support" class="text-area" rows="5"
+          <label class="field-label" for="support">
+            Support
+          </label>
+          <textarea
+            id="support"
+            name="support"
+            class="text-area"
+            rows="5"
           ></textarea>
         </fieldset>
 
         <div class="wizard-controls">
-          <button type="button" class="button button--ghost" data-prev disabled
-            >Back</button
-          >
-          <button type="button" class="button button--primary" data-next
-            >Next step</button
-          >
+          <button type="button" class="button button--ghost" data-prev disabled>
+            Back
+          </button>
+          <button type="button" class="button button--primary" data-next>
+            Next step
+          </button>
         </div>
       </form>
 
@@ -175,12 +193,16 @@ const supportPrompt = getGoalPrompt("support");
         </dl>
 
         <div class="goal-summary__actions">
-          <button type="button" class="button button--ghost" data-copy-goal
-            >Copy goal</button
+          <button type="button" class="button button--ghost" data-copy-goal>
+            Copy goal
+          </button>
+          <button
+            type="button"
+            class="button button--secondary"
+            data-print-goal
           >
-          <button type="button" class="button button--secondary" data-print-goal
-            >Print this</button
-          >
+            Print this
+          </button>
         </div>
         <p class="goal-summary__note">
           Bring this summary back to your HeartStrong booklet and share it with
@@ -192,8 +214,7 @@ const supportPrompt = getGoalPrompt("support");
         data-summary-announcer
         aria-live="polite"
         aria-atomic="true"
-      >
-      </p>
+      ></p>
     </div>
   </div>
 

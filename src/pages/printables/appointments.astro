@@ -34,9 +34,7 @@ const rows = Array.from({ length: 6 });
         </button>
       </div>
 
-      <table
-        class="tracker-table tracker-table--wide tracker-table--appointment-log"
-      >
+      <table class="tracker-table tracker-table--wide tracker-table--appointment-log">
         <thead>
           <tr>
             <th>Date / Provider</th>
@@ -46,16 +44,14 @@ const rows = Array.from({ length: 6 });
           </tr>
         </thead>
         <tbody>
-          {
-            rows.map(() => (
-              <tr>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-              </tr>
-            ))
-          }
+          {rows.map(() => (
+            <tr>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

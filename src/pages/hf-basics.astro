@@ -80,14 +80,12 @@ const efCards = [
       </p>
     </div>
     <div class="card-grid">
-      {
-        efCards.map((item) => (
-          <article class="surface-card">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))
-      }
+      {efCards.map((item) => (
+        <article class="surface-card">
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </article>
+      ))}
     </div>
   </section>
 
@@ -102,21 +100,19 @@ const efCards = [
     </div>
 
     <div class="symptom-grid">
-      {
-        symptomGuide.map((item) => (
-          <article class:list={["symptom-card", `symptom-card--${item.tone}`]}>
-            <h3>{item.state}</h3>
-            <ul>
-              {item.items.map((entry) => (
-                <li>{entry}</li>
-              ))}
-            </ul>
-            <p>
-              <strong>Action:</strong> {item.action}
-            </p>
-          </article>
-        ))
-      }
+      {symptomGuide.map((item) => (
+        <article class:list={["symptom-card", `symptom-card--${item.tone}`]}>
+          <h3>{item.state}</h3>
+          <ul>
+            {item.items.map((entry) => (
+              <li>{entry}</li>
+            ))}
+          </ul>
+          <p>
+            <strong>Action:</strong> {item.action}
+          </p>
+        </article>
+      ))}
     </div>
 
     <article class="mental-health-callout" data-reveal>

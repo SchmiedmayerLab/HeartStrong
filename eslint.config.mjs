@@ -4,11 +4,11 @@
 //
 // SPDX-License-Identifier: MIT
 
-import speziWebConfigurations from "@stanfordspezi/spezi-web-configurations";
+import * as groveConfigurations from "@schmiedmayerlab/grove-configurations";
 import { configs as astroConfigs } from "eslint-plugin-astro";
 import globals from "globals";
 
-const { getEslintNodeConfig } = speziWebConfigurations;
+const { getEslintNodeConfig } = groveConfigurations;
 
 export default [
   {
@@ -16,7 +16,7 @@ export default [
   },
   {
     settings: {
-      "import/core-modules": [
+      "import-x/core-modules": [
         "astro:assets",
         "astro:content",
         "astro:env/client",
@@ -79,7 +79,7 @@ export default [
   {
     files: ["vitest.config.ts"],
     rules: {
-      "import/no-default-export": "off",
+      "import-x/no-default-export": "off",
     },
   },
 ];

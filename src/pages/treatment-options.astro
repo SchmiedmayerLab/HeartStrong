@@ -96,12 +96,12 @@ const medTips = [
         <p class="eyebrow">For HFrEF</p>
         <ul>
           <li>
-            <strong>Hydralazine and isosorbide dinitrate:</strong> Helps relax blood
-            vessels and reduce strain on the heart.
+            <strong>Hydralazine and isosorbide dinitrate:</strong> Helps relax
+            blood vessels and reduce strain on the heart.
           </li>
           <li>
-            <strong>Vericiguat:</strong> May be used for some people with HFrEF who
-            still have symptoms or have needed recent hospital care.
+            <strong>Vericiguat:</strong> May be used for some people with HFrEF
+            who still have symptoms or have needed recent hospital care.
           </li>
         </ul>
       </article>
@@ -110,9 +110,10 @@ const medTips = [
         <p class="eyebrow">For HFpEF</p>
         <ul>
           <li>
-            <strong>GLP-1 agonists:</strong> GLP-1 agonists, such as semaglutide or
-            tirzepatide, may be used for some people with HFpEF. They may be discussed
-            when weight, blood sugar, or overall metabolic health is part of the plan.
+            <strong>GLP-1 agonists:</strong> GLP-1 agonists, such as semaglutide
+            or tirzepatide, may be used for some people with HFpEF. They may be
+            discussed when weight, blood sugar, or overall metabolic health is
+            part of the plan.
           </li>
         </ul>
       </article>
@@ -161,14 +162,12 @@ const medTips = [
     </div>
 
     <div class="card-grid card-grid--five">
-      {
-        medTips.map((item) => (
-          <article class="surface-card">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))
-      }
+      {medTips.map((item) => (
+        <article class="surface-card">
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </article>
+      ))}
     </div>
   </section>
 

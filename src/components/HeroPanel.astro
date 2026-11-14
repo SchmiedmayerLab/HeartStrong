@@ -33,23 +33,21 @@ const resolvedCtaHref =
       <p class="hero-panel__intro">{hero.intro}</p>
 
       <div class="hero-panel__actions">
-        {
-          hero.cta && (
-            <a
-              class="button button--primary"
-              href={resolvedCtaHref}
-              data-astro-prefetch={hasPageRouteCta ? "hover" : undefined}
-            >
-              {hero.cta.label}
-            </a>
-          )
-        }
+        {hero.cta && (
+          <a
+            class="button button--primary"
+            href={resolvedCtaHref}
+            data-astro-prefetch={hasPageRouteCta ? "hover" : undefined}
+          >
+            {hero.cta.label}
+          </a>
+        )}
       </div>
 
       <div class="hero-panel__detail-bar">
-        <span class="glass-chip"
-          >Bring your HeartStrong booklet to every appointment</span
-        >
+        <span class="glass-chip">
+          Bring your HeartStrong booklet to every appointment
+        </span>
       </div>
       <slot />
     </div>

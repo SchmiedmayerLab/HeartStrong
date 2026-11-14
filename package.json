@@ -14,9 +14,10 @@
     "Astro"
   ],
   "engines": {
-    "node": ">=24"
+    "node": "^24.22.3 || >=26.3.0",
+    "npm": ">=11 <12"
   },
-  "packageManager": "npm@11.17.0",
+  "packageManager": "npm@11.21.2",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
@@ -39,22 +40,40 @@
   "dependencies": {
     "@fontsource-variable/atkinson-hyperlegible-next": "^5.3.0",
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",
-    "astro": "^7.1.6"
+    "astro": "^7.4.7"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "@astrojs/sitemap": "^3.7.3",
-    "@stanfordspezi/spezi-web-configurations": "^0.7.0",
-    "@types/node": "^26.1.2",
-    "@vitest/coverage-v8": "^4.1.10",
-    "eslint": "^9.39.5",
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/sitemap": "^3.7.4",
+    "@types/node": "^26.6.6",
+    "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^10.14.0",
     "eslint-import-resolver-typescript": "^4.4.5",
-    "eslint-plugin-astro": "^1.7.0",
-    "globals": "^17.8.0",
-    "prettier": "^3.9.6",
-    "prettier-plugin-astro": "^0.14.1",
+    "eslint-plugin-astro": "^3.2.1",
+    "globals": "^17.14.0",
+    "prettier": "^3.9.10",
+    "prettier-plugin-astro": "^1.1.2",
     "prettier-plugin-tailwindcss": "^0.8.1",
-    "typescript": "^6.0.3",
-    "vitest": "^4.1.10"
+    "typescript": "6.0.3",
+    "vitest": "^5.1.0",
+    "@schmiedmayerlab/grove-configurations": "^0.1.2",
+    "@typescript-eslint/parser": "^8.72.1",
+    "typescript-eslint": "^8.72.1"
+  },
+  "overrides": {
+    "brace-expansion": "5.0.12",
+    "smol-toml@<=1.8.0": "1.9.1",
+    "colord@<2.9.4": "2.9.4",
+    "svgo@>=4.0.0 <4.1.0": "4.1.0",
+    "nanoid": "3.3.18",
+    "minimatch@>=7.0.0 <11.0.1": "11.0.5",
+    "katex@>=0.11.0 <0.18.2": "0.19.1",
+    "re2js@>=2.2.0 <2.8.7": "2.9.1",
+    "table": {
+      "ajv": "8.18.0"
+    },
+    "yaml-language-server": {
+      "ajv": "8.18.0"
+    }
   }
 }

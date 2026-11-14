@@ -28,11 +28,9 @@ const brandMascot = mascotIllustrations.welcome.mascot;
     >
       <span class="brand-mark__badge" aria-hidden="true">
         <picture>
-          {
-            brandMascot.fallbackSrc && (
-              <source srcset={withBase(brandMascot.src)} type="image/webp" />
-            )
-          }
+          {brandMascot.fallbackSrc && (
+            <source srcset={withBase(brandMascot.src)} type="image/webp" />
+          )}
           <img
             class="brand-mark__badge-image"
             src={withBase(brandMascot.fallbackSrc ?? brandMascot.src)}
@@ -69,26 +67,24 @@ const brandMascot = mascotIllustrations.welcome.mascot;
       data-open="false"
     >
       <div class="site-nav__links">
-        {
-          navItems.map((item) => {
-            const isActive =
-              item.href === "/" ?
-                currentPath === "/"
-              : currentPath === item.href ||
-                currentPath.startsWith(`${item.href}/`);
+        {navItems.map((item) => {
+          const isActive =
+            item.href === "/" ?
+              currentPath === "/"
+            : currentPath === item.href ||
+              currentPath.startsWith(`${item.href}/`);
 
-            return (
-              <a
-                href={withBase(item.href)}
-                class:list={[isActive && "is-active"]}
-                aria-current={isActive ? "page" : undefined}
-                data-astro-prefetch="hover"
-              >
-                {item.shortTitle}
-              </a>
-            );
-          })
-        }
+          return (
+            <a
+              href={withBase(item.href)}
+              class:list={[isActive && "is-active"]}
+              aria-current={isActive ? "page" : undefined}
+              data-astro-prefetch="hover"
+            >
+              {item.shortTitle}
+            </a>
+          );
+        })}
       </div>
       <a
         class="button button--nav button--nav-crisis site-nav__crisis"
@@ -99,8 +95,9 @@ const brandMascot = mascotIllustrations.welcome.mascot;
       >
         <span class="button--nav__stack">
           <span class="button--nav__label">{quickSupport.crisisCtaLabel}</span>
-          <span class="button--nav__detail">{quickSupport.crisisCallLabel}</span
-          >
+          <span class="button--nav__detail">
+            {quickSupport.crisisCallLabel}
+          </span>
         </span>
       </a>
     </nav>

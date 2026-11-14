@@ -27,36 +27,34 @@ const { previousPage, nextPage } = getPageNeighbors(navItems, currentPath);
     <p class="eyebrow">Keep moving</p>
     <h2 id="page-nav-heading">Your next HeartStrong step</h2>
     <div class="page-navigator__links">
-      {
-        previousPage ?
-          <a
-            class="page-jump"
-            href={withBase(previousPage.href)}
-            data-astro-prefetch="hover"
-          >
-            <span class="page-jump__meta">Previous</span>
-            <strong>{previousPage.title}</strong>
-          </a>
-        : <div class="page-jump page-jump--muted">
-            <span class="page-jump__meta">Home base</span>
-            <strong>You are at the start</strong>
-          </div>
+      {previousPage ?
+        <a
+          class="page-jump"
+          href={withBase(previousPage.href)}
+          data-astro-prefetch="hover"
+        >
+          <span class="page-jump__meta">Previous</span>
+          <strong>{previousPage.title}</strong>
+        </a>
+      : <div class="page-jump page-jump--muted">
+          <span class="page-jump__meta">Home base</span>
+          <strong>You are at the start</strong>
+        </div>
       }
 
-      {
-        nextPage ?
-          <a
-            class="page-jump"
-            href={withBase(nextPage.href)}
-            data-astro-prefetch="hover"
-          >
-            <span class="page-jump__meta">Next</span>
-            <strong>{nextPage.title}</strong>
-          </a>
-        : <a class="page-jump" href={withBase("/")} data-astro-prefetch="hover">
-            <span class="page-jump__meta">Loop back</span>
-            <strong>Return to Welcome</strong>
-          </a>
+      {nextPage ?
+        <a
+          class="page-jump"
+          href={withBase(nextPage.href)}
+          data-astro-prefetch="hover"
+        >
+          <span class="page-jump__meta">Next</span>
+          <strong>{nextPage.title}</strong>
+        </a>
+      : <a class="page-jump" href={withBase("/")} data-astro-prefetch="hover">
+          <span class="page-jump__meta">Loop back</span>
+          <strong>Return to Welcome</strong>
+        </a>
       }
     </div>
   </div>

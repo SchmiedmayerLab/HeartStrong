@@ -64,14 +64,12 @@ const heartFailureResources = [
 
   <section class="section-block shell" data-reveal>
     <div class="card-grid">
-      {
-        resourceHighlights.map((item) => (
-          <article class="surface-card">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))
-      }
+      {resourceHighlights.map((item) => (
+        <article class="surface-card">
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </article>
+      ))}
     </div>
   </section>
 
@@ -88,34 +86,32 @@ const heartFailureResources = [
     </div>
 
     <div class="resource-grid">
-      {
-        heartFailureResources.map((item) => (
-          <article class="resource-card surface-card external-resource-card">
-            <div
-              class:list={[
-                "external-resource-card__icon",
-                `external-resource-card__icon--${item.iconLabel.toLowerCase()}`,
-              ]}
-              aria-hidden="true"
-            >
-              <span>{item.iconLabel}</span>
-            </div>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-            <div class="resource-card__meta">
-              <span class="glass-chip">Opens in a new tab</span>
-            </div>
-            <a
-              class="button button--ghost"
-              href={item.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Open resource
-            </a>
-          </article>
-        ))
-      }
+      {heartFailureResources.map((item) => (
+        <article class="resource-card surface-card external-resource-card">
+          <div
+            class:list={[
+              "external-resource-card__icon",
+              `external-resource-card__icon--${item.iconLabel.toLowerCase()}`,
+            ]}
+            aria-hidden="true"
+          >
+            <span>{item.iconLabel}</span>
+          </div>
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <div class="resource-card__meta">
+            <span class="glass-chip">Opens in a new tab</span>
+          </div>
+          <a
+            class="button button--ghost"
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open resource
+          </a>
+        </article>
+      ))}
     </div>
   </section>
 

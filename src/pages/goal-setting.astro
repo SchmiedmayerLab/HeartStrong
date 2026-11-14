@@ -41,14 +41,12 @@ const smartCards = [
     </div>
 
     <div class="card-grid card-grid--five">
-      {
-        smartCards.map((item) => (
-          <article class="surface-card">
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-          </article>
-        ))
-      }
+      {smartCards.map((item) => (
+        <article class="surface-card">
+          <h3>{item.title}</h3>
+          <p>{item.body}</p>
+        </article>
+      ))}
     </div>
   </section>
 

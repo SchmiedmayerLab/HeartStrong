@@ -3,9 +3,9 @@
 // SPDX-FileCopyrightText: 2026 Stanford University and the project authors (see CONTRIBUTORS.md)
 // SPDX-License-Identifier: MIT
 
-import speziWebConfigurations from "@stanfordspezi/spezi-web-configurations";
+import * as groveConfigurations from "@schmiedmayerlab/grove-configurations";
 
-const { prettierConfig } = speziWebConfigurations;
+const { prettierConfig } = groveConfigurations;
 
 export default {
   ...prettierConfig,
