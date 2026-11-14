@@ -57,7 +57,7 @@ jobs:
           fi
 
   analyze:
-    name: Analyze JavaScript and TypeScript
+    name: Analyze
     needs: availability
     if: ${{ needs.availability.outputs.enabled == 'true' }}
     runs-on: ubuntu-latest

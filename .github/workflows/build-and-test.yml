@@ -63,11 +63,11 @@ jobs:
           fi
 
   reuse:
-    name: REUSE compliance
+    name: REUSE Compliance Check
     uses: SchmiedmayerLab/.github/.github/workflows/reuse.yml@v0.5
 
   markdown-links:
-    name: Markdown links
+    name: Markdown Link Check
     if: ${{ github.event_name == 'pull_request' }}
     permissions:
       contents: read
@@ -79,7 +79,7 @@ jobs:
     uses: SchmiedmayerLab/.github/.github/workflows/actionlint.yml@v0.5
 
   quality:
-    name: Lint, types, and unit tests
+    name: Lint
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -120,7 +120,7 @@ jobs:
           retention-days: 14
 
   build:
-    name: Build and audit configured deployment
+    name: Build static site
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -229,6 +229,25 @@ jobs:
             test-results/
           if-no-files-found: warn
           retention-days: 14
+
+  test-results:
+    name: Test and Coverage
+    needs: [quality, build, portability, browser]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require all validation jobs to pass
+        env:
+          QUALITY_RESULT: ${{ needs.quality.result }}
+          BUILD_RESULT: ${{ needs.build.result }}
+          PORTABILITY_RESULT: ${{ needs.portability.result }}
+          BROWSER_RESULT: ${{ needs.browser.result }}
+        run: |
+          [[ "${QUALITY_RESULT}" == 'success' &&
+             "${BUILD_RESULT}" == 'success' &&
+             "${PORTABILITY_RESULT}" == 'success' &&
+             "${BROWSER_RESULT}" == 'success' ]]
 
   dependency-review:
     name: Dependency review
