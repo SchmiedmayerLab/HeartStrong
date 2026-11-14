@@ -1,6 +1,6 @@
 # Website infrastructure
 
-Baseline: WebsiteTemplate revision `304cbd71c2bac64eb20def4289c4180f0e9b4487`.
+Baseline: WebsiteTemplate revision `f0e1c06b442b1416f57309ccd8bfcbe58bc0c31d`.
 
 Use the exact Node and npm versions declared in this repository. Keep the
 Playwright package and browser-container version and digest synchronized.
