@@ -123,7 +123,7 @@ Dependency updates need extra care:
 
 Deployment model:
 
-- GitHub Pages deploys from `main`.
+- GitHub Pages deployment requires an approved manual dispatch from `main` or a stable release; pushes do not deploy.
 - Do not assume a branch push gives you a safe separate Pages preview.
 
 When in doubt:

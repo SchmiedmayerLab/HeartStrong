@@ -12,7 +12,16 @@ const { getEslintNodeConfig } = groveConfigurations;
 
 export default [
   {
-    ignores: [".astro/**", "eslint_report.json"],
+    files: ["scripts/**/*.mjs", "site.config.mjs", "publishing.config.mjs"],
+    languageOptions: { globals: globals.node },
+  },
+  {
+    ignores: [
+      ".astro/**",
+      "_site/**",
+      "release-manifest.json",
+      "eslint_report.json",
+    ],
   },
   {
     settings: {

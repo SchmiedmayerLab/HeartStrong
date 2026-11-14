@@ -7,34 +7,13 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 
-const defaultRepositoryOwner = "SchmiedmayerLab";
-const defaultRepositoryName = "HeartStrong";
-const repository =
-  process.env.GITHUB_REPOSITORY ??
-  `${defaultRepositoryOwner}/${defaultRepositoryName}`;
-const [repositoryOwner, repositoryName] =
-  repository ? repository.split("/") : [];
-const isUserOrOrgPagesRepository = repositoryName?.endsWith(".github.io");
-const site =
-  process.env.SITE_URL ??
-  (repositoryOwner && repositoryName ?
-    isUserOrOrgPagesRepository ? `https://${repositoryOwner}.github.io`
-    : `https://${repositoryOwner}.github.io/${repositoryName}`
-  : undefined);
-const base =
-  process.env.BASE_PATH ??
-  ((
-    process.env.GITHUB_ACTIONS === "true" &&
-    repositoryName &&
-    !isUserOrOrgPagesRepository
-  ) ?
-    `/${repositoryName}`
-  : "/");
+import { siteConfig } from "./site.config.mjs";
 
 export default defineConfig({
   output: "static",
-  site,
-  base,
+  site: siteConfig.url,
+  base: siteConfig.base,
+  trailingSlash: "always",
   integrations: [sitemap()],
   prefetch: {
     prefetchAll: false,

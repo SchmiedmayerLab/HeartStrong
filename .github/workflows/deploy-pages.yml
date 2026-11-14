@@ -8,6 +8,8 @@ name: Deploy to GitHub Pages
 
 on:
   workflow_dispatch:
+  release:
+    types: [published]
 
 concurrency:
   group: pages-deployment
@@ -17,53 +19,142 @@ permissions:
   contents: read
 
 jobs:
-  build:
-    if: github.ref == 'refs/heads/main'
-    name: Build Pages artifact
-    runs-on: ubuntu-latest
-    timeout-minutes: 15
-    env:
-      ASTRO_TELEMETRY_DISABLED: "1"
-      BASE_PATH: "/"
-      SITE_URL: "https://heartstronger.org"
+  metadata:
+    name: Validate deployment destination and release
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pages: read
+    outputs:
+      enabled: ${{ steps.policy.outputs.enabled }}
+      origin: ${{ steps.policy.outputs.origin }}
+      base: ${{ steps.policy.outputs.base }}
     steps:
-      - name: Checkout repository
+      - name: Check out deployment source and main history
         uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Use Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+      - name: Validate opt-in destination and release policy
+        id: policy
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          RELEASE_PRERELEASE: ${{ github.event.release.prerelease }}
+          RELEASE_DRAFT: ${{ github.event.release.draft }}
+        run: node scripts/check-release.mjs
+      - name: Read existing Pages configuration
+        if: steps.policy.outputs.enabled == 'true'
+        id: pages
+        uses: actions/configure-pages@v6
+      - name: Compare Pages with the reviewed destination
+        if: steps.policy.outputs.enabled == 'true'
+        env:
+          EXPECTED_ORIGIN: ${{ steps.policy.outputs.origin }}
+          EXPECTED_BASE: ${{ steps.policy.outputs.base }}
+          ACTUAL_ORIGIN: ${{ steps.pages.outputs.origin }}
+          ACTUAL_BASE: ${{ steps.pages.outputs.base_path }}
+        run: |
+          [[ "${ACTUAL_ORIGIN}" == "${EXPECTED_ORIGIN}" ]]
+          [[ "${ACTUAL_BASE}" == "${EXPECTED_BASE}" ]]
 
-      - name: Setup Node.js
+  validation:
+    name: Validate the exact public bundle
+    needs: metadata
+    if: needs.metadata.outputs.enabled == 'true'
+    permissions:
+      contents: read
+      pull-requests: read
+    uses: ./.github/workflows/build-and-test.yml
+    with:
+      site_url: ${{ needs.metadata.outputs.origin }}
+      site_base: ${{ needs.metadata.outputs.base }}
+
+  upload:
+    name: Upload the validated public bundle
+    needs: [metadata, validation]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      SITE_URL: ${{ needs.metadata.outputs.origin }}
+      SITE_BASE: ${{ needs.metadata.outputs.base }}
+      SITE_OUTPUT_DIR: _site
+    steps:
+      - name: Check out audit tools
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Use Node.js
         uses: actions/setup-node@v7
         with:
           node-version-file: .node-version
           cache: npm
-
       - name: Use the declared npm version
         run: npm install --global "$(node --print 'require("./package.json").packageManager')"
-      - name: Install dependencies
+      - name: Install locked dependencies
         run: npm ci
-
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v6
-
-      - name: Build site
-        run: npm run build
-
-      - name: Upload GitHub Pages artifact
+      # Do not rebuild: this artifact passed every browser project in validation.
+      - name: Download the tested bundle and private checksum manifest
+        uses: actions/download-artifact@v8
+        with:
+          name: public-bundle
+      - name: Recheck downloaded bytes and public routes
+        run: |
+          npm run bundle:audit
+          npm run test:site
+      - name: Upload only visitor-facing files
         uses: actions/upload-pages-artifact@v5
         with:
-          path: dist
+          path: _site
+          retention-days: 1
 
   deploy:
-    name: Deploy GitHub Pages
-    needs: build
-    runs-on: ubuntu-latest
+    name: Deploy
+    needs: upload
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       pages: write
       id-token: write
+    outputs:
+      url: ${{ steps.deployment.outputs.page_url }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy Pages
+      - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+  verification:
+    name: Verify live bytes against the tested artifact
+    needs: [metadata, deploy]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - name: Check out verification tool
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Use Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+      - name: Download the private checksum manifest
+        uses: actions/download-artifact@v8
+        with:
+          name: public-bundle
+      - name: Verify every published file and excluded paths
+        env:
+          DEPLOYMENT_URL: ${{ needs.deploy.outputs.url }}
+          SITE_URL: ${{ needs.metadata.outputs.origin }}
+          SITE_BASE: ${{ needs.metadata.outputs.base }}
+        run: node scripts/verify-deployment.mjs

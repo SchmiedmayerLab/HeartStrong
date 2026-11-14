@@ -1646,6 +1646,18 @@ html[data-color-scheme="dark"] .support-ribbon__link {
   vertical-align: top;
 }
 
+@media screen and (max-width: 40rem) {
+  .tracker-table {
+    table-layout: fixed;
+  }
+
+  .tracker-table th,
+  .tracker-table td {
+    padding: 0.4rem;
+    overflow-wrap: anywhere;
+  }
+}
+
 .tracker-table td {
   height: 3.6rem;
 }

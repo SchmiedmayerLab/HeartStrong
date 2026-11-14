@@ -5,14 +5,14 @@
 // SPDX-License-Identifier: MIT
 
 import type { APIRoute } from "astro";
-import { resolveSiteUrl } from "../lib/urls";
+import { resolveSiteUrl, withBase } from "../lib/urls";
 
 const getRobotsTxt = (site?: URL | string) =>
   [
     "User-agent: *",
     "Allow: /",
     site ?
-      `Sitemap: ${resolveSiteUrl(site, "/sitemap-index.xml").toString()}`
+      `Sitemap: ${resolveSiteUrl(site, withBase("/sitemap-index.xml")).toString()}`
     : undefined,
   ]
     .filter((line): line is string => line !== undefined)

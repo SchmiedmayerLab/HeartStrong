@@ -1,0 +1,8 @@
+Third-party notices
+===================
+
+atkinson-hyperlegible-next: SIL Open Font License 1.1; see licenses/atkinson-hyperlegible-next.txt.
+bricolage-grotesque: SIL Open Font License 1.1; see licenses/bricolage-grotesque.txt.
+
+Institutional marks remain subject to their owners' trademark and identity policies.
+Asset-specific license notices are retained alongside distributed assets.

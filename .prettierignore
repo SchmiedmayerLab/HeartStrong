@@ -10,3 +10,11 @@ dist
 eslint_report.json
 node_modules
 package-lock.json
+
+_site/
+
+release-manifest.json
+
+playwright-report/
+
+test-results/

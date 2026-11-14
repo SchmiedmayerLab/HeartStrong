@@ -46,15 +46,15 @@ HeartStrong recommends Node.js 24 or newer. The repository includes a [`.node-ve
 
 1. Install dependencies:
 
-```bash
-npm install
-```
+   ```bash
+   npm ci
+   ```
 
 2. Start the local development server:
 
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
 
 3. Open the local Astro server URL shown in the terminal.
 
@@ -70,15 +70,19 @@ npm run validate
 
 ## Deployment
 
-The site is configured for GitHub Pages deployment through [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml).
+Merging source changes runs CI without deploying. Publishing is disabled in
+`publishing.config.mjs` until a separate destination and public-content review.
+After approval, enable publishing and use a manual workflow dispatch from `main`
+or a stable `vMAJOR.MINOR.PATCH` release whose commit belongs to `main`.
 
-To publish it:
+The configured destination must exactly match GitHub Pages. CI packages approved
+pages and their assets into `_site/`; browsers test that artifact, deployment
+uploads the same bytes, and live verification checks their hashes. The adjacent
+`release-manifest.json` is never website content.
 
-1. Push the repository to GitHub.
-2. In the repository settings, configure Pages to deploy from **GitHub Actions**.
-3. Push to `main` or run the workflow manually.
-
-The Astro configuration supports both repository-path builds and custom-domain deployments through the GitHub Actions environment, so deployments like `https://heartstronger.org/` work without manual path edits.
+Run `npm run validate:all` before proposing a release. The portability check
+exercises a repository subpath using `SITE_URL` and `SITE_BASE`. See
+[website infrastructure](docs/INFRASTRUCTURE.md) for maintenance requirements.
 
 ## Contributing
 
